@@ -1,0 +1,149 @@
+#include <iostream>
+#include <time.h>
+#include <random>
+using namespace std;
+mt19937 gen (time(0)); 
+
+int MyGenerator() {
+    int rand = gen() % 5000;
+    return rand;
+}
+
+int* Merge(int arr1[], int arr2[], int size1, int size2) {
+    int  temp1 = 0;
+    int  temp2 = 0;
+
+    int* arr3 = new int [size1 + size2];
+    int  k = 0;
+    while (temp1 < size1 && temp2 < size2){
+
+        while(temp1 < size1 && arr1[temp1] < arr2[temp2]){
+            arr3[k] = arr1[temp1];
+            temp1++;
+            k++;
+        }
+
+        while (temp2 < size2 && arr1[temp1] >= arr2[temp2]){
+            arr3[k] = arr2[temp2];
+            temp2++;
+            k++;
+        }
+        
+    }
+    if(temp1 == size1){
+        for(int i = temp2; i < size2; i++){
+            arr3[k] = arr2[i];
+            k++;
+        }
+    } else {
+        for(int i = temp1; i < size1; i++){
+            arr3[k] = arr1[i];
+            k++;
+        }
+    }
+
+    return arr3;
+
+}
+
+
+int* MergeSort(int* arr, int size){
+    if (size == 1) {
+        return arr;
+    }
+    int m = size / 2;
+    int* arr1 = new int[m];
+    int* arr2 = new int[size - m];
+    for (int i = 0; i < m; i++) {
+        arr1[i] = arr[i];
+    }
+    for (int i = 0; i < size - m;i++) {
+        arr2[i] = arr[m + i];
+    }
+    arr1 = MergeSort(arr1, m);
+    arr2 = MergeSort(arr2, size - m);
+
+    return Merge(arr1, arr2, m, size - m);
+}
+
+void Print(int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main()
+{   
+    
+    const int size = 20000;
+    int arr1[size];
+    int arr2[size];
+	int arr3[size];
+
+    for(int i = 0; i < size;i++){
+        arr1[i] =  MyGenerator();
+        arr2[i] = arr1[i];
+		arr3[i] = arr1[i];
+    }
+   
+    clock_t start1 = clock();
+
+    for(int  i = 0; i < size; i++){
+        bool checkSwap = false;
+        for(int j = 0; j < size - i - 1; j++){
+            if(arr1[j] > arr1[j + 1]){
+                int temp = arr1[j];
+                arr1[j] = arr1[j + 1];
+                arr1[j + 1] = temp;
+                checkSwap = true;
+            }
+        }
+        if(!checkSwap){
+            break;
+        }
+    }
+    
+    clock_t end1 = clock();
+    double elapsed1 = double(end1- start1)/CLOCKS_PER_SEC;
+
+    cout << "Bubble Sorting" << "\n" << "Size = " << size << "\n";
+    cout <<  "Run Time = " << elapsed1;
+    cout << endl << endl;
+
+    clock_t start2 = clock();
+      
+    for(int i = 1; i < size; i++ ){
+        for(int j = i; j  > 0; j--){
+            if(arr2[j] < arr2[j - 1]){
+                int temp = arr2[j];
+                arr2[j] = arr2[j - 1];
+                arr2[j - 1] = temp;
+            }
+            else {
+                break;
+            }
+        }
+    }
+    clock_t end2 = clock();
+    double elapsed2 = double(end2- start2)/CLOCKS_PER_SEC;
+
+    cout << "Insertion Sorting" << "\n" << "Size = " << size << "\n";
+    cout <<  "Run Time = " << elapsed2;
+    cout << endl;
+    
+    
+	clock_t start3 = clock();
+	int *p = arr3;
+
+	p = MergeSort(arr3, size);
+    
+	clock_t end3 = clock();
+    double elapsed3 = double(end3- start3)/CLOCKS_PER_SEC;
+
+    cout << "Insertion Sorting" << "\n" << "Size = " << size << "\n";
+    cout <<  "Run Time = " << elapsed3;
+    cout << endl;
+
+    return 0;
+}
