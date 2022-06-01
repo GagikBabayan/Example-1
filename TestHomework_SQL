@@ -1,0 +1,87 @@
+
+-- Create Publisher_book
+CREATE TABLE Publisher_book (
+  Publisher_ID int NOT NULL AUTO_INCREMENT,
+  Publisher VARCHAR(100),
+  PRIMARY KEY (Publisher_ID)
+);
+
+-- Insert Publisher_book
+INSERT INTO Publisher_book (Publisher) VALUES 
+    ('Erevan');
+SELECT * FROM Publisher_book;
+
+
+-- Create Auther_book
+CREATE TABLE Auther_book (
+    Auther_ID int NOT NULL AUTO_INCREMENT,
+    Auther VARCHAR(100),
+    PRIMARY KEY (Auther_ID)
+);
+
+-- Insert Auther_book
+INSERT INTO Auther_book (Auther) VALUES 
+    ('Hovhanes Tumanyan');
+SELECT * FROM Auther_book;
+
+-- Create Books
+CREATE TABLE Books (
+    ID int NOT NULL AUTO_INCREMENT,
+    Title VARCHAR(100),
+    Pubdata date,
+    Auther_ID int NOT NULL ,
+    Publisher_ID int NOT NULL,
+    PRIMARY KEY (ID),
+    FOREIGN KEY (Publisher_ID)  REFERENCES Publisher_book(Publisher_ID),
+    FOREIGN KEY (Publisher_ID)  REFERENCES Publisher_book(Publisher_ID)
+);
+
+
+-- Insert Books
+INSERT INTO Books (Title,Pubdata,Auther_ID,Publisher_ID) VALUES
+    ('Giqor','2022-06-01','1','1');
+SELECT * FROM Books;
+
+
+-- Create Subscribers
+CREATE TABLE Subscribers (
+  ID int NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(100),
+  Surname VARCHAR(100),
+  B_day DATE,
+  Address VARCHAR(100),
+  PRIMARY KEY (ID)
+  );
+  
+-- Insert Subscribers
+INSERT INTO Subscribers (Name,Surname,B_day,Address) VALUES
+    ('Gagik','Babayan','2001-03-07','Ashot Grashi 31');
+  SELECT * FROM Subscribers;
+
+-- Create Subscribers_book
+CREATE TABLE Subscribers_book (
+  ID int NOT NULL AUTO_INCREMENT,
+  Subscriber_ID int,
+  Taken_date DATE,
+  Returned_date DATE,
+  Deadline DATE,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (Subscriber_ID) REFERENCES Subscribers (ID)
+  );
+
+-- Create Subscribers_book
+INSERT INTO Subscribers_book (Subscriber_ID,Taken_date,Returned_date,Deadline) VALUES
+    ('1','2022-05-20','2022-05-31','2022-06-01');
+  SELECT * FROM Subscribers_book;
+  
+-- Create Book_inventory  
+CREATE TABLE Book_inventory (
+  ID int NOT NULL AUTO_INCREMENT,
+  Book_ID int,
+  Sub_book_ID int,
+  _Condition VARCHAR(100),
+  Status VARCHAR(100),
+  PRIMARY KEY (ID),
+  FOREIGN KEY (Book_ID) REFERENCES Books (ID),
+  FOREIGN KEY (Sub_book_ID) REFERENCES Subscribers_book (ID)
+  );
