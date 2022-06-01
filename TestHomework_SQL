@@ -8,7 +8,7 @@ CREATE TABLE Publisher_book (
 
 -- Insert Publisher_book
 INSERT INTO Publisher_book (Publisher) VALUES 
-    ('Erevan');
+    ('Erevan'),('Zangak');
 SELECT * FROM Publisher_book;
 
 
@@ -21,7 +21,7 @@ CREATE TABLE Auther_book (
 
 -- Insert Auther_book
 INSERT INTO Auther_book (Auther) VALUES 
-    ('Hovhanes Tumanyan');
+    ('Hovhanes Tumanyan'),('Exishe Charenc');
 SELECT * FROM Auther_book;
 
 -- Create Books
@@ -39,7 +39,7 @@ CREATE TABLE Books (
 
 -- Insert Books
 INSERT INTO Books (Title,Pubdata,Auther_ID,Publisher_ID) VALUES
-    ('Giqor','2022-06-01','1','1');
+    ('Giqor','2022-06-01','1','1'),('Land of Fire','1986-03-01','2','2');
 SELECT * FROM Books;
 
 
