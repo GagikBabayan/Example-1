@@ -23,7 +23,7 @@ CREATE TABLE Auther_book (
 );
 
 -- Insert Auther_book
-INSERT INTO Auther_book (Auther) VALUES 
+INSERT INTO Auther_book (Name,Surname) VALUES 
     ('Hovhanes', 'Tumanyan'),('Exishe', 'Charenc');
 SELECT * FROM Auther_book;
 
