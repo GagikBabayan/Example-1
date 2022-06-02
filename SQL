@@ -17,13 +17,14 @@ SELECT * FROM Publisher_book;
 -- Create Auther_book
 CREATE TABLE Auther_book (
     Auther_ID int NOT NULL AUTO_INCREMENT,
-    Auther VARCHAR(100),
+    `Name` VARCHAR(100),
+	`Surname` VARCHAR(100),
     PRIMARY KEY (Auther_ID)
 );
 
 -- Insert Auther_book
 INSERT INTO Auther_book (Auther) VALUES 
-    ('Hovhanes Tumanyan'),('Exishe Charenc');
+    ('Hovhanes', 'Tumanyan'),('Exishe', 'Charenc');
 SELECT * FROM Auther_book;
 
 -- Create Books
@@ -34,8 +35,8 @@ CREATE TABLE Books (
     Auther_ID int NOT NULL ,
     Publisher_ID int NOT NULL,
     PRIMARY KEY (ID),
-    FOREIGN KEY (Publisher_ID)  REFERENCES Publisher_book(Publisher_ID),
-    FOREIGN KEY (Publisher_ID)  REFERENCES Publisher_book(Publisher_ID)
+    CONSTRAINT Books_FK_Publisher_book FOREIGN KEY (Publisher_ID)  REFERENCES Publisher_book(Publisher_ID),
+    CONSTRAINT Books_FK_Auther_book    FOREIGN KEY (Auther_ID)  REFERENCES Auther_book(Auther_ID)
 );
 
 
@@ -68,7 +69,7 @@ CREATE TABLE Subscribers_book (
   Returned_date DATE,
   Deadline DATE,
   PRIMARY KEY (ID),
-  FOREIGN KEY (Subscriber_ID) REFERENCES Subscribers (ID)
+  CONSTRAINT Subscribers_book_FK_Subscribers FOREIGN KEY (Subscriber_ID) REFERENCES Subscribers (ID)
   );
 
 -- Create Subscribers_book
@@ -84,8 +85,8 @@ CREATE TABLE Book_inventory (
   _Condition VARCHAR(100),
   Status VARCHAR(100),
   PRIMARY KEY (ID),
-  FOREIGN KEY (Book_ID) REFERENCES Books (ID),
-  FOREIGN KEY (Sub_book_ID) REFERENCES Subscribers_book (ID)
+  CONSTRAINT Book_inventory_FK_Books FOREIGN KEY (Book_ID) REFERENCES Books (ID),
+  CONSTRAINT Book_inventory_FK_Subscribers_book FOREIGN KEY (Sub_book_ID) REFERENCES Subscribers_book (ID)
   );
   
   DROP TABLE Publisher_book;
