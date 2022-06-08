@@ -68,7 +68,7 @@
                     </div>
                     <br>
                     <div>
-                        <label for="massage">Message:</label>
+                       <br><label for="massage">Message:</label>
                         <textarea id="message" ></textarea>
                     </div>
                 </form>
