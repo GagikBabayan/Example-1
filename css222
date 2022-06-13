@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+main {
+  height: 100vh;
+  width: 100%;
+  background-image: url("../picture/background.jpg");
+  background-attachment: scroll;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.overlay {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+
+}
+
+.menu {
+  height: 100px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  position: fixed;
+}
+
+.logo {
+  width: 40px;
+  height: auto;
+}
+
+.buttons {
+  color: white;
+  width: 280px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+.text-button {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  margin-left: 200px;
+}
+
+#text1 {
+  font-family: 'Anton';
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+}
+
+#text2 {
+  font-family: 'Anton';
+  font-size: 100px;
+  color: white;
+  font-weight: bold;
+}
+
+button {
+  font-family: 'Anton';
+  font-size: 25px;
+  background-color: unset;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 70px;
+  width: 240px;
+}
+
+body {
+  background-color: #23212124;
+  height: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section2 {
+  margin-top: -150px;
+  flex-flow: wrap;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 750px;
+  /* border: 5px solid black; */
+  display: flex;
+  /* padding-top: %; */
+  justify-content: space-around;
+}
+
+.left-text {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%;
+  height: 250px;
+}
+
+
+.right-text {
+  font-size: 25px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%;
+  height: 250px;
+}
+
+
+.section3 {
+  background-color: #E5E5E5;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.column {
+  background-color: #FFFFFF;
+  flex-direction: column;
+  display: flex;
+  height: 580px;
+  box-shadow: 0 8px 2px -2px #16151530;
+  /* border-bottom: 5px solid #343A40; */
+}
+
+ol {
+  line-height: 40px;
+  padding-left: 40px;
+  font-size: 25px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  background-color: #343A40;
+  height: 180px;
+  width: 100%;
+  left: -2px;
+  top: 2287px;
+  border-radius: 0px;
+  margin-top: 100px;
+}
+
+
+.top-text,
+.middle {
+  line-height: 26px;
+  width: 55%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttom {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.middle {
+  /* height: 600px; */
+  text-align: center;
+  color: white;
+}
+
+h3::before {
+  content: "Get";
+  color: #FFC100;
+
+}
+
+hr {
+  margin-top: 20px auto 0;
+  width: 15%;
+  text-align: center;
+  background-color: #565656;
+  height: 5px;
+  border: 2px solid #565656;
+}
+
+.triangle {
+  display: flex;
+  justify-content: right;
+  margin-top: -20px;
+  margin-right: -23px;
+}
+
+.triangle-left {
+  border-top: 20px solid transparent;
+  border-right: 160px solid;
+  border-bottom: 20px solid transparent;
+}
+
+.triangle-right {
+  margin-left: -1px;
+  border-top: 20px solid transparent;
+  border-left: 25px solid;
+  border-bottom: 20px solid transparent;
+}
+
+.first_color {
+  border-left-color: #FFC100;
+  border-right-color: #FFC100;
+}
+
+.second_color {
+  border-left-color: #1D98D0;
+  border-right-color: #1D98D0;
+}
+
+.third_color {
+  border-left-color: #0DD868;
+  border-right-color: #0DD868;
+}
