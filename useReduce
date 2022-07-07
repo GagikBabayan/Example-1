@@ -1,0 +1,40 @@
+import "./Counter.css";
+import { useReducer } from "react";
+
+function reducer(state, action) {
+  console.log(state, "---");
+  console.log(action, "--action");
+  switch (action.type) {
+    case "Add":
+      return { count: state.count + 1 };
+    case "Take":
+      return { count: state.count - 1 };
+    default:
+      throw new Error("Unknown action");
+  }
+}
+
+function Counter({ initalSum }) {
+  const [state, dispatch] = useReducer(reducer, initalSum);
+
+  function Add() {
+    dispatch({ type: "Add" });
+  }
+
+  function Take() {
+    dispatch({ type: "Take" });
+  }
+
+  return (
+    <div className="main">
+      <span>{state.count}</span> <br />
+      <input placeholder="Sum" onChange={(e) =>   e.target.value }></input>
+      <div className="buttons">
+        <button onClick={Add}>Add</button>
+        <button onClick={Take}>Take</button>
+      </div>
+    </div>
+  );
+}
+
+export { Counter };
