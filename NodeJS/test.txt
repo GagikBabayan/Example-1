@@ -1,0 +1,65 @@
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+const port = 3001;
+
+app.use(cors());
+app.use(express.json())
+
+
+app.get('todos', (req, res) => {
+  res.send(JSON.stringify(todos));
+  res.end();
+});
+
+
+
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
+
+import {useEffect, useState} from 'react';
+
+
+function App () {
+  const [todos, setTodos] = useState([]);
+ 
+
+  useEffect(() => {
+    fetch('/todos')
+      .then((response) => response.json())
+      .then((data) => setTodos(data));
+  }, []);
+  
+  
+  return (
+    <div>
+      <h1>Todos</h1>
+      <div>
+        <input onChange={handleChange} value={message} />
+        <button onClick={addTodo}>Add</button>
+      </div>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <input type="checkbox"/>
+            <span>{todo.title} </span>
+            <b> status: {todo.status ? 'Done' : 'In progress'}</b>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+  }
+
+export default App;
