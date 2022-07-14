@@ -46,15 +46,15 @@ function App () {
     <div>
       <h1>Todos</h1>
       <div>
-        <input onChange={handleChange} value={message} />
-        <button onClick={addTodo}>Add</button>
+        <input  />
+        <button >Add</button>
       </div>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
             <input type="checkbox"/>
-            <span>{todo.title} </span>
-            <b> status: {todo.status ? 'Done' : 'In progress'}</b>
+            <span>{todo.text} </span>
+            <b> status: {todo.icCompleted }</b>
           </li>
         ))}
       </ul>
