@@ -1,0 +1,42 @@
+import express from "express";
+import { MongoClient } from "mongodb";
+
+const client = new MongoClient("mongodb://localhost:27017");
+
+(async function () {
+  await client.connect();
+
+  const cleanup = (event) => {
+    client.close();
+    process.exit();
+  };
+
+  process.on("SIGINT", cleanup);
+  process.on("SIGTERM", cleanup);
+
+  const db = client.db("test");
+  const collection = db.collection("users");
+
+  await collection.insertOne({
+    name: "Ashot",
+    age: 17,
+    languages: ["armenian", "russian"],
+  });
+  await collection.updateOne(
+    { name: "Tom" },
+    { $push: { languages: "armenia" } }
+  );
+
+  const app = express();
+
+  app.use(express.json());
+
+  app.get("/", async (req, res) => {
+    const postByTom = await collection.find({ name: "Tom" }).toArray();
+    res.send(postByTom);
+  });
+
+  app.listen(process.env.PORT, () => {
+    console.log("Listeninig port " + process.env.PORT);
+  });
+})();
