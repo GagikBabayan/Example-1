@@ -1,0 +1,29 @@
+import React, { useState, useEffect } from "react";
+import moment from "moment";
+
+function App() {
+  let [startDate, setStartDate] = useState(moment());
+  let [endDate, setEndDate] = useState(moment(startDate).add(-7, "days"));
+
+  const Prev = () => {
+    setStartDate(moment(startDate).add(-7, "days"));
+    setEndDate(moment(endDate).add(-7, "days"));
+  };
+  const Next = () => {
+    setStartDate(moment(startDate).add(7, "days"));
+    setEndDate(moment(endDate).add(7, "days"));
+  };
+
+  return (
+    <div>
+      <h1>Time Log</h1>
+      <div>
+        <p>This Week</p>
+        <button onClick={Prev}>-</button>
+        {moment(endDate).format("DD MMM YY")}-
+        {moment(startDate).format("DD MMM YY")}
+        <button onClick={Next}>+</button>
+      </div>
+    </div>
+  );
+}
