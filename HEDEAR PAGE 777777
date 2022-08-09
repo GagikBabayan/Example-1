@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 
+import "./App.css";
+
 function App() {
   let [startDate, setStartDate] = useState(moment());
   let [endDate, setEndDate] = useState(moment(startDate).add(-7, "days"));
@@ -13,16 +15,24 @@ function App() {
     setStartDate(moment(startDate).add(7, "days"));
     setEndDate(moment(endDate).add(7, "days"));
   };
+  const NowDate = () => {
+    setStartDate(moment());
+    setEndDate(moment().add(-7, "days"));
+  };
 
   return (
-    <div>
+    <div className="header">
       <h1>Time Log</h1>
-      <div>
-        <p>This Week</p>
-        <button onClick={Prev}>-</button>
-        {moment(endDate).format("DD MMM YY")}-
-        {moment(startDate).format("DD MMM YY")}
-        <button onClick={Next}>+</button>
+      <div className="times">
+        <a href="/" onclick={NowDate}>
+          THIS WEEK
+        </a>
+        <div id="date">
+          <button onClick={Prev}>-</button>
+          {moment(endDate).format("DD MMM YY")} -
+          {moment(startDate).format("DD MMM YY")}
+          <button onClick={Next}>+</button>
+        </div>
       </div>
     </div>
   );
